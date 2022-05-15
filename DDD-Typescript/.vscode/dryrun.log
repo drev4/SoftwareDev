@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/diego/SoftwareDev/DDD-Typescript'
+make: Nothing to be done for `deps'.
+make: Leaving directory `/Users/diego/SoftwareDev/DDD-Typescript'
+ 
