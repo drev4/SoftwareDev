@@ -1,0 +1,9 @@
+services:
+
+  Apps.blog.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: []
+
+  Apps.blog.controllers.BlogEntryPutController:
+    class: ../../controllers/BlogEntryPutController
+    arguments: [""]
