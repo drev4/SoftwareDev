@@ -5,4 +5,4 @@ Feature: Api Status
 
   Scenario: Check Api Status
     Given I send a GET request to "/status"
-    Then the respond status code should be 200
+    Then the response status code should be 200
