@@ -15,7 +15,7 @@ describe('CourseCreator', () => {
 
     const id = 'some-id';
     const title = 'some-name';
-    const body = 'some-duration';
+    const body = 'some-body';
 
     const blogEntry = new BlogEntry({id, title, body});
 
