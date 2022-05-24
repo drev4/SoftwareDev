@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from 'prop-types'
 
-class Loading extends Component {
-    render() {
-        return (<div className={"loading"}>
-            {this.props.message}
-        </div>)
-    }
+function Loading({message}){
+    return (
+        <div className={"loading"}>
+            {message}
+        </div>
+    )
 }
 
 Loading.propTypes = {

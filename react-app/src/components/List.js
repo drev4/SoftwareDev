@@ -1,41 +1,33 @@
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import Loading from "./Loading";
 
-class List extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: false,
-            videos: []
-        }
-    }
-    componentDidMount() {
-        this.setState({isLoading: true})
+function List(){
+    const [isLoading, setIsLoading] = useState(false)
+    const [videos, setVideos] = useState([])
 
+    useEffect(() => {
+        setIsLoading(true)
         setTimeout(() => {
-            this.setState({
-                isLoading: false,
-                videos: [{id:1}, {id:2}, {id:3}]
-            })
-        }, 2000);
-    }
-    render() {
-        const { videos, isLoading } = this.state
-        if(isLoading) {
-            return <Loading message={"Loading..."}/>
+            setIsLoading(false)
+            setVideos([{id:1}, {id:2}, {id:3}])
+        }, 2000)
+    }, [])
+    return (<React.Fragment>
+        {isLoading &&
+            <Loading message={"Loading..."}/>
         }
-        return (<React.Fragment>
+        {!isLoading &&
             <div className={"list-container"}>
                 <div className="list-grid-container">
                     {
-                         videos.map((video,i) => {
-                            return (<span>#{video.id}</span>)
+                        videos.map((video,i) => {
+                            return (<span key={i}>#{video.id}</span>)
                         })
                     }
                 </div>
             </div>
+        }
         </React.Fragment>)
-    }
 }
 
 export default List;
