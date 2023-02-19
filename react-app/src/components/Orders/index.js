@@ -5,74 +5,51 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from '../Title';
+import {useDispatch, useSelector} from "react-redux";
+import {IconButton} from "@mui/material";
+import {addUser} from "../../reducers/user";
+import Add from "@mui/icons-material/Add";
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-    return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-    createData(
-        0,
-        '16 Mar, 2019',
-        'Elvis Presley',
-        'Tupelo, MS',
-        'VISA ⠀•••• 3719',
-        312.44,
-    ),
-    createData(
-        1,
-        '16 Mar, 2019',
-        'Paul McCartney',
-        'London, UK',
-        'VISA ⠀•••• 2574',
-        866.99,
-    ),
-    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-    createData(
-        3,
-        '16 Mar, 2019',
-        'Michael Jackson',
-        'Gary, IN',
-        'AMEX ⠀•••• 2000',
-        654.39,
-    ),
-    createData(
-        4,
-        '15 Mar, 2019',
-        'Bruce Springsteen',
-        'Long Branch, NJ',
-        'VISA ⠀•••• 5919',
-        212.79,
-    ),
-];
 
 export default function Orders() {
+    const dispatch = useDispatch()
+    const users = useSelector((state) => state.users.users) ?? []
+    const randomUser = () => {
+        const id =  users ? users[users.length-1]?.id + 1 : 0
+        return {
+            id,
+            name: `Test ${id}`,
+            age: Math.round(Math.random()*10)
+        }
+    }
+    const buttonHandler = () => {
+        dispatch(addUser(randomUser()))
+    }
+
     return (
         <React.Fragment>
             <Title>Recent Orders</Title>
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Date</TableCell>
+                        <TableCell>Id</TableCell>
                         <TableCell>Name</TableCell>
-                        <TableCell>Ship To</TableCell>
-                        <TableCell>Payment Method</TableCell>
-                        <TableCell align="right">Sale Amount</TableCell>
+                        <TableCell>Age</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {users.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell>{row.date}</TableCell>
+                            <TableCell>{row.id}</TableCell>
                             <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.shipTo}</TableCell>
-                            <TableCell>{row.paymentMethod}</TableCell>
-                            <TableCell align="right">{`$${row.amount}`}</TableCell>
+                            <TableCell>{row.age}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
+            <IconButton onClick={buttonHandler} color="inherit">
+                <Add />
+            </IconButton>
         </React.Fragment>
     );
 }

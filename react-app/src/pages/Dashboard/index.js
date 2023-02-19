@@ -16,6 +16,10 @@ import Deposits from "../../components/Deposits";
 import Orders from "../../components/Orders";
 import LeftDrawer from "../../components/LeftDrawer";
 import Title from "../../components/Title";
+import {useEffect} from "react";
+import {applySetUsers} from "../../reducers/user";
+import {getUsers} from "../../services/users";
+import {useDispatch} from "react-redux";
 const mdTheme = createTheme({
     palette: {
         white: {
@@ -24,6 +28,11 @@ const mdTheme = createTheme({
     }
 });
 function Dashboard() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(applySetUsers(getUsers()))
+    }, [dispatch])
 
     const [open, setOpen] = React.useState(false);
     const toggleDrawer = () => {
