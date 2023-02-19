@@ -4,6 +4,10 @@ services:
     class: ../../controllers/StatusGetController
     arguments: []
 
+  Apps.blog.controllers.ClassExample:
+    class: ../../example/ClassExample
+    arguments: []
+
   Apps.blog.controllers.BlogEntryPutController:
     class: ../../controllers/BlogEntryPutController
-    arguments: [""]
+    arguments: ['@Apps.blog.controllers.ClassExample']

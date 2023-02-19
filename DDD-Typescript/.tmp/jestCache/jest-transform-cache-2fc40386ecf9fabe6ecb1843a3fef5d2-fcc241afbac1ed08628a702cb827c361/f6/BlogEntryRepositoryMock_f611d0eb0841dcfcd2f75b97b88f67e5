@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogEntryRepositoryMock = void 0;
-const BlogEntry_1 = require("../../../../../src/Contexts/Blog/BlogEntry/domain/BlogEntry");
+const BlogEntry_1 = require("../../../../../src/Contexts/Blog/TodoEntry/domain/TodoEntry");
 class BlogEntryRepositoryMock {
     constructor() {
         this.mockSave = jest.fn();
@@ -24,7 +24,7 @@ class BlogEntryRepositoryMock {
     assertLastSavedBlogEntryIs(expected) {
         const mock = this.mockSave.mock;
         const lastSavedCourse = mock.calls[mock.calls.length - 1][0];
-        expect(lastSavedCourse).toBeInstanceOf(BlogEntry_1.BlogEntry);
+        expect(lastSavedCourse).toBeInstanceOf(BlogEntry_1.TodoEntry);
         expect(lastSavedCourse.id).toEqual(expected.id);
     }
 }

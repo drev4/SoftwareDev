@@ -1,13 +1,13 @@
-import { BlogEntryCreator } from '../../../../../src/Contexts/Blog/BlogEntry/application/BlogEntryCreator';
-import { BlogEntry } from '../../../../../src/Contexts/Blog/BlogEntry/domain/BlogEntry';
+import { TodoEntryCreator } from '../../../../../src/Contexts/Todo/TodoEntry/application/TodoEntryCreator';
+import { TodoEntry } from '../../../../../src/Contexts/Todo/TodoEntry/domain/TodoEntry';
 import { BlogEntryRepositoryMock } from '../__mocks__/BlogEntryRepositoryMock';
 
 let repository: BlogEntryRepositoryMock;
-let creator: BlogEntryCreator;
+let creator: TodoEntryCreator;
 
 beforeEach(() => {
   repository = new BlogEntryRepositoryMock();
-  creator = new BlogEntryCreator(repository);
+  creator = new TodoEntryCreator(repository);
 });
 
 describe('CourseCreator', () => {
@@ -17,7 +17,7 @@ describe('CourseCreator', () => {
     const title = 'some-name';
     const body = 'some-body';
 
-    const blogEntry = new BlogEntry({id, title, body});
+    const blogEntry = new TodoEntry({id, title, body});
 
     await creator.run(id, title, body);
 

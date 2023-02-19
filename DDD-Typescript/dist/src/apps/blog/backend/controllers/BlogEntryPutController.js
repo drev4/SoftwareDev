@@ -15,10 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogEntryPutController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 class BlogEntryPutController {
-    constructor() { }
+    //private example: ClassExample;
+    constructor(example) {
+        console.log(example);
+        //this.example = example;
+        //console.log(example);
+    }
     run(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.status(http_status_1.default.CREATED).send();
+            //this.example.renameTest('Rename');
+            res.status(http_status_1.default.OK).send('OK');
         });
     }
 }

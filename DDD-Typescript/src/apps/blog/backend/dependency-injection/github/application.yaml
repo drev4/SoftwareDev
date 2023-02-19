@@ -1,0 +1,10 @@
+services:
+  Github.Commit.domain.GithubRepository:
+    class: ../../../../../Contexts/Github/infrastructure/ExternalGithubRepository
+    arguments: []
+  Github.Commit.application.CommitFinder:
+    class: ../../../../../Contexts/Github/application/SearchAllCommits/CommitFinder
+    arguments: ['@Github.Commit.domain.GithubRepository']
+  Github.Commit.controllers.GithubCommitsGetController:
+    class: ../../controllers/GithubCommitsGetController
+    arguments: [ '@Github.Commit.domain.GithubRepository' ]

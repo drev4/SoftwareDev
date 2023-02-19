@@ -38,7 +38,7 @@ class Server {
         (0, routes_1.registerRoutes)(router);
         router.use((err, req, res, next) => {
             console.log(err);
-            res.status(http_status_1.default.INTERNAL_SERVER_ERROR).send(err.message);
+            res.status(http_status_1.default.INTERNAL_SERVER_ERROR).send();
         });
     }
     listen() {
